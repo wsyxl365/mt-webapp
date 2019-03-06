@@ -15,7 +15,7 @@ function getHtmlArray(entryMap) {
 
         if( fs.existsSync(fileName)) {
             htmlArray.push(new htmlWebpackPlugin({
-                fileName: key + '.html',
+                filename: key + '.html',
                 template: fileName,
                 chunks: [key]
             }))
@@ -57,5 +57,8 @@ module.exports = {
     },
     plugins: [
 
-    ].concat(htmlArray)
+    ].concat(htmlArray),
+    devServer: {
+        contentBase: devPath
+    }
 }
