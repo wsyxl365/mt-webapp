@@ -1,4 +1,5 @@
 import { TABKEY }from "../config";
+import { CHANGE_TAB } from "../actions/actionTypes";
 const initState = {
     tabs: [
         {
@@ -16,8 +17,15 @@ const initState = {
     ],
     activeKey: TABKEY.home
 };
+const changeTab = (state, action) => {
+    let activeKey = action.data.activeKey;
+    return {...state, activeKey: activeKey};
+};
+
 const tabReducer = (state = initState, action) => {
     switch (action.type) {
+        case CHANGE_TAB:
+            return changeTab(state, action);
         default:
             return state;
     }
