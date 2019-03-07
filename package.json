@@ -19,10 +19,11 @@
   "homepage": "https://github.com/wsyxl365/mt-webapp#readme",
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "8.0.4",
     "babel-plugin-react-hot-loader": "^3.0.0-beta.6",
     "clean-webpack-plugin": "^0.1.19",
     "eslint": "^4.19.1",

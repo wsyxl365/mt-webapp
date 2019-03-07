@@ -1,14 +1,29 @@
 import './BottomBar.scss';
 import React from 'react';
-
 import { connect } from "react-redux";
 import { changeTab } from "../actions/tabAction";
 
+
+const mapStateToProps = (state)=> {
+    return {
+        tabs : state.tabReducer.tabs,
+        activeKey : state.tabReducer.activeKey
+    }
+}
+
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        changeTabRedux(item){
+            dispatch(changeTab(item));
+        }
+    }
+}
 /**
  * @constructor <BottomBar>
  * @description 首页底部tab栏
  */
-class BottomBar extends React.Component{
+@connect(mapStateToProps, mapDispatchToProps)
+export default class BottomBar extends React.Component{
     constructor(props){
         super(props);
         this.renderItems = this.renderItems.bind(this);
@@ -36,9 +51,9 @@ class BottomBar extends React.Component{
      * 底部tab切换逻辑
      */
     changeTab(item) {
-        this.props.dispatch(changeTab({
+        this.props.changeTabRedux({
             activeKey: item.key
-        }))
+        })
     }
 
     render() {
@@ -51,10 +66,3 @@ class BottomBar extends React.Component{
         )
     }
 }
-
-export default connect(
-    state =>({
-        tabs : state.tabReducer.tabs,
-        activeKey : state.tabReducer.activeKey
-    })
-)(BottomBar)

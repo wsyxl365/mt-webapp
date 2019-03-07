@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import BottomBar from "../BottomBar/BottomBar.jsx";
+import BottomBar from "../BottomBar/BottomBar";
 
 import { connect } from "react-redux";
 
