@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require('path');
 const htmlWebpackPlugin=require("html-webpack-plugin");
 const fs = require('fs');
@@ -42,6 +43,10 @@ const entryMap = getEntry();
 const htmlArray = getHtmlArray(entryMap);
 module.exports = {
     mode: "development",
+    devServer: {
+        contentBase: devPath,
+        hot: true
+    },
     entry: entryMap,
     resolve: {
         extensions: ['.js', '.jsx']
@@ -52,8 +57,8 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.(js|jsx)$/, use: [{loader: "babel-loader"}], include: srcRoot},
-            { test: /\.css$/, use: ['style-loader', 'css-loader'], include: srcRoot },
+            { test: /\.(js|jsx)$/, use: [{loader: "babel-loader"}, {loader: "eslint-loader"}], include: srcRoot},
+            { test: /\.css$/, use: ['style-loader', { loader: 'css-loader' , options: {minimize: true}}], include: srcRoot },
             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader', {
                     loader: "sass-resources-loader",
                     options: {
@@ -64,10 +69,7 @@ module.exports = {
         ]
     },
     plugins: [
-
-    ].concat(htmlArray),
-
-    devServer: {
-        contentBase: devPath
-    }
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ].concat(htmlArray)
 }
