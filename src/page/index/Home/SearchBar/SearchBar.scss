@@ -1,0 +1,35 @@
+.search-bar {
+  width: 100%;
+  height: px2rem(40px);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: px2rem(14px);
+  .bar-location {
+    margin-right: px2rem(20px);
+    border-radius: px2rem(13px);
+    background-color: rgba(0,0,0,0.33);
+    height: px2rem(28px);
+    width: px2rem(92px);
+  }
+  .location-icon {
+    display: inline-block;
+    width: px2rem(15px);
+    height: px2rem(20px);
+    vertical-align: px2rem(8px);
+    margin-left: px2rem(8px);
+    //background: image();
+  }
+  .location-text {
+    display: inline-block;
+    font-size: px2rem(14px);
+    color: #fff;
+    vertical-align: px2rem(12px);
+    margin-left: px2rem(8px);
+    margin-right: px2rem(19px);
+  }
+  .place-holder {
+    font-size: px2rem(14px);
+  }
+}
